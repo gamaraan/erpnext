@@ -120,7 +120,7 @@ class WoocommerceSettings(Document):
 		self.endpoint = delivery_url
 
 	def create_webhook_client_url(self):
-		endpoint = "/api/method/erpnext.erpnext_integrations.connectors.woocommerce_connection.client"
+		client_endpoint = "/api/method/erpnext.erpnext_integrations.connectors.woocommerce_connection.client"
 
 		try:
 			url = frappe.request.url
@@ -132,11 +132,11 @@ class WoocommerceSettings(Document):
 			uri=urlparse(url)
 		)
 
-		delivery_url = server_url + endpoint
+		delivery_url = server_url + client_endpoint
 		self.client_endpoint = delivery_url
 
 	def create_webhook_item_url(self):
-		endpoint = "/api/method/erpnext.erpnext_integrations.connectors.woocommerce_connection.item"
+		item_endpoint = "/api/method/erpnext.erpnext_integrations.connectors.woocommerce_connection.item"
 
 		try:
 			url = frappe.request.url
@@ -148,7 +148,7 @@ class WoocommerceSettings(Document):
 			uri=urlparse(url)
 		)
 
-		delivery_url = server_url + endpoint
+		delivery_url = server_url + item_endpoint
 		self.item_endpoint = delivery_url
 
 @frappe.whitelist()
